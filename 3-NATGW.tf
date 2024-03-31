@@ -1,6 +1,6 @@
 resource "aws_nat_gateway" "Project-M-NATGW-1" {
-  allocation_id = aws_eip.NAT.id
-  subnet_id     = aws_subnet.public-us-east-1a.id
+  allocation_id = aws_eip.nat
+  subnet_id     = aws_subnet.public-us-east-1.id
 
   tags = {
     Name = "gw NAT"
@@ -11,9 +11,9 @@ resource "aws_nat_gateway" "Project-M-NATGW-1" {
   depends_on = [aws_internet_gateway.Project-M-IGW]
 }
 
-resource "eip" "NAT" {
+resource "aws_eip" "nat" {
   tags = {
-    Name = "NAT-gatewate-eip"
+    name = "aws_eip"
   }
 }
 
